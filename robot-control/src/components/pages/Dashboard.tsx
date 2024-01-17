@@ -8,26 +8,47 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
+import { POST } from "../../composables/api.ts";
+import urls from "../../composables/urls.json";
 
 export function Dashboard() {
   const { login, setLogin } = useContext(UserContext);
   const [pictureLeft, setPictureLeft] = useState(true);
   console.log(pictureLeft);
 
-  const handleLeft = () => {
+  const handleLeft = async () => {
     console.log("left");
+    console.log(
+      await POST(urls.local + "/api/robot/action", { action: "LEFT" })
+    );
   };
 
-  const handleRight = () => {
+  const handleRight = async () => {
     console.log("right");
+    console.log(
+      await POST(urls.local + "/api/robot/action", { action: "RIGHT" })
+    );
   };
 
-  const handleUp = () => {
-    console.log("up");
+  const handleForward = async () => {
+    console.log("forward");
+    console.log(
+      await POST(urls.local + "/api/robot/action", { action: "FORWARD" })
+    );
   };
 
-  const handleDown = () => {
-    console.log("down");
+  const handleBackward = async () => {
+    console.log("backward");
+    console.log(
+      await POST(urls.local + "/api/robot/action", { action: "BACKWARD" })
+    );
+  };
+
+  const handleStop = async () => {
+    console.log("stop");
+    console.log(
+      await POST(urls.local + "/api/robot/action", { action: "STOP" })
+    );
   };
 
   return (
@@ -48,25 +69,29 @@ export function Dashboard() {
           <div className="w-full h-full relative flex flex-row xl:flex-col ">
             <div className="flex aspect-square mx-auto xl:w-4/5 2xl:w-3/5 grid grid-cols-3 gap-4 grid-rows-3">
               <button
-                onClick={handleUp}
+                onMouseDown={handleForward}
+                onMouseUp={handleStop}
                 className="flex items-center justify-center col-start-2 bg-neutral-400 rounded-xl shadow-outline opacity-50 m-px hover:m-0 hover:cursor-pointer hover:opacity-85 transition-all ease-in-out duration-150"
               >
                 <ArrowUpIcon className="w-1/2 h-1/2 m-auto text-neutral-100" />
               </button>
               <button
-                onClick={handleLeft}
+                onMouseDown={handleLeft}
+                onMouseUp={handleStop}
                 className="flex items-center justify-center row-start-2 col-start-1  bg-neutral-400 rounded-xl shadow-outline opacity-50 m-px hover:m-0 hover:cursor-pointer hover:opacity-85 transition-all ease-in-out duration-150"
               >
                 <ArrowLeftIcon className="w-1/2 h-1/2 m-auto text-neutral-100" />
               </button>
               <button
-                onClick={handleRight}
+                onMouseDown={handleRight}
+                onMouseUp={handleStop}
                 className="flex items-center justify-center row-start-2 col-start-3  bg-neutral-400 rounded-xl shadow-outline opacity-50 m-px hover:m-0 hover:cursor-pointer hover:opacity-85 transition-all ease-in-out duration-150"
               >
                 <ArrowRightIcon className="w-1/2 h-1/2 m-auto text-neutral-100" />
               </button>
               <button
-                onClick={handleDown}
+                onMouseDown={handleBackward}
+                onMouseUp={handleStop}
                 className="flex items-center justify-center row-start-3 col-start-2  bg-neutral-400 rounded-xl shadow-outline opacity-50 m-px hover:m-0 hover:cursor-pointer hover:opacity-85 transition-all ease-in-out duration-150"
               >
                 <ArrowDownIcon className="w-1/2 h-1/2 m-auto text-neutral-100" />
