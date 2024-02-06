@@ -18,28 +18,28 @@ export function Dashboard() {
   const handleLeft = async () => {
     console.log("left");
     console.log(
-      await POST(urls.local + "/api/robot/action", { action: "LEFT" })
+      await POST(urls.local + ":8000/api/robot/action", { action: "LEFT" })
     );
   };
 
   const handleRight = async () => {
     console.log("right");
     console.log(
-      await POST(urls.local + "/api/robot/action", { action: "RIGHT" })
+      await POST(urls.local + ":8000/api/robot/action", { action: "RIGHT" })
     );
   };
 
   const handleForward = async () => {
     console.log("forward");
     console.log(
-      await POST(urls.local + "/api/robot/action", { action: "FORWARD" })
+      await POST(urls.local + ":8000/api/robot/action", { action: "FORWARD" })
     );
   };
 
   const handleBackward = async () => {
     console.log("backward");
     console.log(
-      await POST(urls.local + "/api/robot/action", { action: "BACKWARD" })
+      await POST(urls.local + ":8000/api/robot/action", { action: "BACKWARD" })
     );
   };
 
