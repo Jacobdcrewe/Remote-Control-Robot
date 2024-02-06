@@ -11,3 +11,6 @@ Run `npm install`
 Run `npm run start`
 
 Run `"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=%LOCALAPPDATA%\Google\chromeTemp` in cmd to use without cors (temp)
+
+
+ uvicorn server:app --reload --host 0.0.0.0

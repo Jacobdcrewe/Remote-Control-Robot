@@ -24,13 +24,15 @@ export function Login() {
     };
     try {
       //const token_vals = await POST(urls.login, data);
-      const token_vals: ITokenModel = {
-        success: true,
+      var token_vals: ITokenModel = {
+        success: false,
         access_token: "",
         refresh_token: "",
         token_type: "",
       };
-      console.log(token_vals);
+      if(username == "admin" && password == "$Admin123"){
+        token_vals.success = true;
+      }
       if (token_vals.success) {
         setLoading(false);
         setLogin(token_vals);

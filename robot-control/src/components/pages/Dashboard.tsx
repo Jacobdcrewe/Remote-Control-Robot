@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../ContentRouter.tsx";
-import img from "../../assets/images/sample.png";
 import { LoginPageButton } from "../login/LoginPageButton.tsx";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import {
@@ -47,19 +46,19 @@ export function Dashboard() {
   const handleStop = async () => {
     console.log("stop");
     console.log(
-      await POST(urls.local + "/api/robot/action", { action: "STOP" })
+      await POST(urls.local + ":8000/api/robot/action", { action: "STOP" })
     );
   };
 
   return (
-    <div className="w-full h-full min-w-[330px] overscroll-x-contain">
+    <div className="w-full h-full min-w-[700px] overscroll-x-contain">
       <div className="w-full h-full flex flex-wrap gap-4 justify-center">
-        <img
-          src={img}
+        <embed
+          src={urls.local +":9000"}
           className={`${
             pictureLeft ? "order-1" : "order-2"
-          } rounded-xl overflow-hidden aspect-[4/3] max-h-full shadow-outline object-cover`}
-        />
+          } rounded-xl overflow-hidden shadow-outline object-cover w-full lg:w-3/5 aspect-[16/9]`}
+        /> 
 
         <div
           className={`${
