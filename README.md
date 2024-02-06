@@ -10,7 +10,15 @@ Run `npm install`
 
 Run `npm run start`
 
-Run `"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=%LOCALAPPDATA%\Google\chromeTemp` in cmd to use without cors (temp)
 
+# Running Server
+
+Run `chmod +x run_servers.sh` to create run server command
+
+Run `./run_servers.sh` to start the streaming and server
+
+Run `chmod +x stop_servers.sh` to create stop server command
+
+Run `./stop_servers.sh` to stop the streaming and server
 
  uvicorn server:app --reload --host 0.0.0.0
