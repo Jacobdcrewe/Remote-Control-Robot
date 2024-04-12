@@ -10,11 +10,40 @@ import {
 import { POST } from "../../composables/api.ts";
 import urls from "../../composables/urls.json";
 
+
 export function Dashboard() {
   const { login, setLogin } = useContext(UserContext);
   const [pictureLeft, setPictureLeft] = useState(true);
   console.log(pictureLeft);
 
+  // an event listener that checks for on key press of w,a,s,d and then it will call the related code
+  React.useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "w" || event.key === "W") {
+        handleForward();
+      } else if (event.key === "a" || event.key === "A") {
+        handleLeft();
+      } else if (event.key === "d" || event.key === "D") {
+        handleRight();
+      } else if (event.key === "s" || event.key === "S") {
+        handleBackward();
+      }
+    };
+
+    const handleKeyRelease = (event: KeyboardEvent) => {
+      if (event.key === "w" || event.key === "a" || event.key === "d" || event.key === "s" ||  event.key === "W" ||  event.key === "A" ||  event.key === "S" ||  event.key === "D") {
+        handleStop();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keyup", handleKeyRelease);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("keyup", handleKeyRelease);
+    };
+  }, []);
   const handleLeft = async () => {
     console.log("left");
     console.log(
